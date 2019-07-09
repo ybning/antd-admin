@@ -18,16 +18,16 @@ module.exports = {
   i18n: {
     /* Countrys flags: https://www.flaticon.com/packs/countrys-flags */
     languages: [
-      // {
-      //   key: 'pt-br',
-      //   title: 'Português',
-      //   flag: '/brazil.svg',
-      // },
-      // {
-      //   key: 'en',
-      //   title: 'English',
-      //   flag: '/america.svg',
-      // },
+      {
+        key: 'pt-br',
+        title: 'Português',
+        flag: '/portugal.svg',
+      },
+      {
+        key: 'en',
+        title: 'English',
+        flag: '/america.svg',
+      },
       {
         key: 'zh',
         title: '中文',

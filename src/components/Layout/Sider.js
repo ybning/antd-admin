@@ -50,6 +50,7 @@ class Sider extends PureComponent {
               menus={menus}
               theme={theme}
               isMobile={isMobile}
+              collapsed={collapsed}
               onCollapseChange={onCollapseChange}
             />
           </ScrollBar>
