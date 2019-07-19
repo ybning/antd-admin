@@ -1,13 +1,11 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Icon, Switch, Layout } from 'antd'
-import { withI18n, Trans } from '@lingui/react'
 import ScrollBar from '../ScrollBar'
 import { config } from 'utils'
 import SiderMenu from './Menu'
 import styles from './Sider.less'
 
-@withI18n()
 class Sider extends PureComponent {
   render() {
     const {
@@ -59,7 +57,7 @@ class Sider extends PureComponent {
           <div className={styles.switchTheme}>
             <span>
               <Icon type="bulb" />
-              <Trans>Switch Theme</Trans>
+              选择主题
             </span>
             <Switch
               onChange={onThemeChange.bind(
@@ -67,8 +65,10 @@ class Sider extends PureComponent {
                 theme === 'dark' ? 'light' : 'dark'
               )}
               defaultChecked={theme === 'dark'}
-              checkedChildren={i18n.t`Dark`}
-              unCheckedChildren={i18n.t`Light`}
+              // checkedChildren={`Dark`}
+              // unCheckedChildren={`Light`}
+              checkedChildren={`Dark`}
+              unCheckedChildren={`Light`}
             />
           </div>
         )}

@@ -4,7 +4,6 @@ import { connect } from 'dva'
 import { Tabs } from 'antd'
 import { router } from 'utils'
 import { stringify } from 'qs'
-import { withI18n } from '@lingui/react'
 import { Page } from 'components'
 import List from './components/List'
 
@@ -15,7 +14,6 @@ const EnumPostStatus = {
   PUBLISHED: 2,
 }
 
-@withI18n()
 @connect(({ post, loading }) => ({ post, loading }))
 class Post extends PureComponent {
   handleTabClick = key => {
@@ -65,16 +63,10 @@ class Post extends PureComponent {
           }
           onTabClick={this.handleTabClick}
         >
-          <TabPane
-            tab={i18n.t`Publised`}
-            key={String(EnumPostStatus.PUBLISHED)}
-          >
+          <TabPane tab={`Publised`} key={String(EnumPostStatus.PUBLISHED)}>
             <List {...this.listProps} />
           </TabPane>
-          <TabPane
-            tab={i18n.t`Unpublished`}
-            key={String(EnumPostStatus.UNPUBLISH)}
-          >
+          <TabPane tab={`Unpublished`} key={String(EnumPostStatus.UNPUBLISH)}>
             <List {...this.listProps} />
           </TabPane>
         </Tabs>

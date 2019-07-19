@@ -1,7 +1,7 @@
 import axios from 'axios'
-import { cloneDeep, isEmpty } from 'lodash'
+import { cloneDeep } from 'lodash'
 import pathToRegexp from 'path-to-regexp'
-import { message, Modal } from 'antd'
+import { Modal } from 'antd'
 import { CANCEL_REQUEST_MESSAGE } from 'utils/constant'
 import { router } from 'utils'
 import qs from 'qs'
@@ -45,6 +45,7 @@ export default function request(options) {
       cancel,
     })
   })
+  options.method = method
 
   return axios(options)
     .then(response => {
@@ -97,23 +98,28 @@ export default function request(options) {
     })
 }
 
+let load = false
 //登录失效处理
 const loginOvertimeProcess = msg => {
-  const warning = Modal.warning({
-    title: msg,
-    okText: '返回登录页',
-    okButtonProps: {
-      onClick: () => {
-        warning.destroy()
-        router.push({
-          pathname: '/login',
-          search: qs.stringify({
-            from: window.location.pathname,
-          }),
-        })
+  const warning =
+    !load &&
+    Modal.warning({
+      key: 'loginOverTimeModal',
+      title: msg,
+      okText: '返回登录页',
+      okButtonProps: {
+        onClick: () => {
+          warning.destroy()
+          router.push({
+            pathname: '/login',
+            search: qs.stringify({
+              from: window.location.pathname,
+            }),
+          })
+        },
       },
-    },
-  })
+    })
+  load = true
 }
 
 // 添加请求拦截器
@@ -163,8 +169,8 @@ axios.interceptors.response.use(
         }),
       })
     }
-    //1:操作失败,2:没有权限,3:无效token
-    else if (code == '1' || code == '2' || code == '3') {
+    //1:操作失败,2:没有权限,3:无效token,6:账号密码错误
+    else if (code == '1' || code == '2' || code == '3' || code == '6') {
       Modal.warning({
         title: msg,
       })

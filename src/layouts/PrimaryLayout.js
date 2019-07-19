@@ -56,17 +56,18 @@ class PrimaryLayout extends PureComponent {
 
     // Localized route name.
 
-    const lang = langFromPath(location.pathname)
-    const newRouteList =
-      lang !== 'en'
-        ? routeList.map(item => {
-            const { name, ...other } = item
-            return {
-              ...other,
-              name: (item[lang] || {}).name || name,
-            }
-          })
-        : routeList
+    //const lang = langFromPath(location.pathname)
+    // const newRouteList =
+    //   lang !== 'en'
+    //     ? routeList.map(item => {
+    //         const { name, ...other } = item
+    //         return {
+    //           ...other,
+    //           name: (item[lang] || {}).name || name,
+    //         }
+    //       })
+    //     : routeList
+    const newRouteList = routeList
 
     // Find a route that matches the pathname.
     const currentRoute = newRouteList.find(

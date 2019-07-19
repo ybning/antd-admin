@@ -1,21 +1,19 @@
 import React, { PureComponent } from 'react'
 import { Table, Avatar } from 'antd'
-import { withI18n } from '@lingui/react'
 import { Ellipsis } from 'ant-design-pro'
 import styles from './List.less'
 
-@withI18n()
 class List extends PureComponent {
   render() {
-    const { i18n, ...tableProps } = this.props
+    const { ...tableProps } = this.props
     const columns = [
       {
-        title: i18n.t`Image`,
+        title: `Image`,
         dataIndex: 'image',
         render: text => <Avatar shape="square" src={text} />,
       },
       {
-        title: i18n.t`Title`,
+        title: `Title`,
         dataIndex: 'title',
         render: text => (
           <Ellipsis tooltip length={30}>
@@ -24,31 +22,31 @@ class List extends PureComponent {
         ),
       },
       {
-        title: i18n.t`Author`,
+        title: `Author`,
         dataIndex: 'author',
       },
       {
-        title: i18n.t`Categories`,
+        title: `Categories`,
         dataIndex: 'categories',
       },
       {
-        title: i18n.t`Tags`,
+        title: `Tags`,
         dataIndex: 'tags',
       },
       {
-        title: i18n.t`Visibility`,
+        title: `Visibility`,
         dataIndex: 'visibility',
       },
       {
-        title: i18n.t`Comments`,
+        title: `Comments`,
         dataIndex: 'comments',
       },
       {
-        title: i18n.t`Views`,
+        title: `Views`,
         dataIndex: 'views',
       },
       {
-        title: i18n.t`Publish Date`,
+        title: `Publish Date`,
         dataIndex: 'date',
       },
     ]
@@ -58,7 +56,7 @@ class List extends PureComponent {
         {...tableProps}
         pagination={{
           ...tableProps.pagination,
-          showTotal: total => i18n.t`Total ${total} Items`,
+          showTotal: total => `Total ${total} Items`,
         }}
         bordered
         scroll={{ x: 1200 }}

@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import { FilterItem } from 'components'
-import { Trans, withI18n } from '@lingui/react'
 import { Form, Button, Row, Col, DatePicker, Input, Cascader } from 'antd'
 import city from 'utils/city'
 
@@ -23,7 +22,6 @@ const TwoColProps = {
   xl: 96,
 }
 
-@withI18n()
 @Form.create()
 class Filter extends Component {
   handleFields = fields => {
@@ -74,7 +72,7 @@ class Filter extends Component {
   }
 
   render() {
-    const { onAdd, filter, form, i18n } = this.props
+    const { onAdd, filter, form } = this.props
     const { getFieldDecorator } = form
     const { name, address } = filter
 
@@ -90,10 +88,7 @@ class Filter extends Component {
       <Row gutter={24}>
         <Col {...ColProps} xl={{ span: 4 }} md={{ span: 8 }}>
           {getFieldDecorator('name', { initialValue: name })(
-            <Search
-              placeholder={i18n.t`Search Name`}
-              onSearch={this.handleSubmit}
-            />
+            <Search placeholder={`Search Name`} onSearch={this.handleSubmit} />
           )}
         </Col>
         <Col
@@ -106,7 +101,7 @@ class Filter extends Component {
             <Cascader
               style={{ width: '100%' }}
               options={city}
-              placeholder={i18n.t`Please pick an address`}
+              placeholder={`Please pick an address`}
               onChange={this.handleChange.bind(this, 'address')}
               getPopupContainer={() =>
                 document.getElementById('addressCascader')
@@ -121,7 +116,7 @@ class Filter extends Component {
           sm={{ span: 12 }}
           id="createTimeRangePicker"
         >
-          <FilterItem label={i18n.t`CreateTime`}>
+          <FilterItem label={`CreateTime`}>
             {getFieldDecorator('createTime', {
               initialValue: initialCreateTime,
             })(
@@ -148,14 +143,12 @@ class Filter extends Component {
                 className="margin-right"
                 onClick={this.handleSubmit}
               >
-                <Trans>Search</Trans>
+                搜索
               </Button>
-              <Button onClick={this.handleReset}>
-                <Trans>Reset</Trans>
-              </Button>
+              <Button onClick={this.handleReset}>重置</Button>
             </div>
             <Button type="ghost" onClick={onAdd}>
-              <Trans>Create</Trans>
+              创建
             </Button>
           </Row>
         </Col>

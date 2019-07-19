@@ -12,9 +12,9 @@ export default {
       {
         id: '1',
         icon: 'laptop',
-        name: 'Dashboard',
-        zhName: '仪表盘',
-        router: '/dashboard',
+        name: 'Thing',
+        zhName: '物模型',
+        router: '/thing',
       },
     ],
   },
@@ -32,7 +32,7 @@ export default {
         //  if (['', '/'].includes(from)) router.push('/dashboard')
         //  else router.push(from)
         //} else {
-        router.push('/dict')
+        router.push('/thing')
         //}
       } else {
         throw response

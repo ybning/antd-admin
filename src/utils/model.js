@@ -23,6 +23,18 @@ export const pageModel = modelExtend(model, {
     },
   },
 
+  effects: {
+    //更新state
+    *update({ payload }, { put }) {
+      yield put({
+        type: 'updateState',
+        payload: {
+          ...payload,
+        },
+      })
+    },
+  },
+
   reducers: {
     querySuccess(state, { payload }) {
       const { list, pagination } = payload

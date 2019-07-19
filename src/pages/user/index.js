@@ -3,14 +3,12 @@ import PropTypes from 'prop-types'
 import { router } from 'utils'
 import { connect } from 'dva'
 import { Row, Col, Button, Popconfirm } from 'antd'
-import { withI18n } from '@lingui/react'
 import { Page } from 'components'
 import { stringify } from 'qs'
 import List from './components/List'
 import Filter from './components/Filter'
 import Modal from './components/Modal'
 
-@withI18n()
 @connect(({ user, loading }) => ({ user, loading }))
 class User extends PureComponent {
   handleRefresh = newQuery => {
@@ -49,7 +47,7 @@ class User extends PureComponent {
   }
 
   get modalProps() {
-    const { dispatch, user, loading, i18n } = this.props
+    const { dispatch, user, loading } = this.props
     const { currentItem, modalVisible, modalType } = user
 
     return {
@@ -58,9 +56,7 @@ class User extends PureComponent {
       destroyOnClose: true,
       maskClosable: false,
       confirmLoading: loading.effects[`user/${modalType}`],
-      title: `${
-        modalType === 'create' ? i18n.t`Create User` : i18n.t`Update User`
-      }`,
+      title: `${modalType === 'create' ? `Create User` : `Update User`}`,
       centered: true,
       onOk: data => {
         dispatch({

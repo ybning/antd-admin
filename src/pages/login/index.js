@@ -3,14 +3,12 @@ import PropTypes from 'prop-types'
 import { connect } from 'dva'
 import { Button, Row, Form, Icon, Input } from 'antd'
 import { GlobalFooter } from 'ant-design-pro'
-import { Trans, withI18n } from '@lingui/react'
 import { setLocale } from 'utils'
 import config from 'utils/config'
 
 import styles from './index.less'
 const FormItem = Form.Item
 
-@withI18n()
 @connect(({ loading }) => ({ loading }))
 @Form.create()
 class Login extends PureComponent {
@@ -57,7 +55,7 @@ class Login extends PureComponent {
             <span>{config.siteName}</span>
           </div>
           <form>
-            <FormItem hasFeedback>
+            <FormItem>
               {getFieldDecorator('userName', {
                 rules: [
                   {
@@ -65,14 +63,9 @@ class Login extends PureComponent {
                     message: '请输入用户名',
                   },
                 ],
-              })(
-                <Input
-                  onPressEnter={this.handleOk}
-                  placeholder={i18n.t`Username`}
-                />
-              )}
+              })(<Input onPressEnter={this.handleOk} placeholder={`用户名`} />)}
             </FormItem>
-            <FormItem hasFeedback>
+            <FormItem>
               {getFieldDecorator('password', {
                 rules: [
                   {
@@ -84,7 +77,7 @@ class Login extends PureComponent {
                 <Input
                   type="password"
                   onPressEnter={this.handleOk}
-                  placeholder={i18n.t`Password`}
+                  placeholder={`密码`}
                 />
               )}
             </FormItem>
@@ -94,7 +87,7 @@ class Login extends PureComponent {
                 onClick={this.handleOk}
                 loading={loading.effects.login}
               >
-                <Trans>Sign in</Trans>
+                登录
               </Button>
               {/* <p>
                 <span>
