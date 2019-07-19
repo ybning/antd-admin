@@ -5,7 +5,7 @@ class Index extends PureComponent {
   render() {
     //const { i18n } = this.props
     // return <Redirect to={`/dashboard`} />
-    return <Redirect to={`/dashboard`} />
+    return <Redirect to={`/thing`} />
   }
 }
 

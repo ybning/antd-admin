@@ -1,14 +1,14 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'dva'
-import { Row, Col, Card, Spin } from 'antd'
+//import { Row, Col, Card, Spin } from 'antd'
 import { Page, Amap } from 'components'
 import styles from './index.less'
 
 /**
  * 定位
  */
-@connect(({ app, amap, loading }) => ({
+@connect(({ amap, loading }) => ({
   amap,
   loading,
 }))

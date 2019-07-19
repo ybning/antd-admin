@@ -307,12 +307,12 @@ export default modelExtend(pageModel, {
           ...v,
           key: groupId,
           title: groupName,
-          deep: 1,
+          deep: '1',
           children: things.map(v => {
             const { tid, tname } = v
             return {
               ...v,
-              deep: 2,
+              deep: '2',
               key: tid,
               title: tname,
             }

@@ -34,7 +34,8 @@
     "react-highcharts": "^16.0.2",
     "react-perfect-scrollbar": "^1.5.0",
     "recharts": "^1.6.0",
-    "store": "^2.0.0"
+    "store": "^2.0.0",
+    "react-amap": "^1.2.8"
   },
   "devDependencies": {
     "@lingui/babel-preset-react": "^2.8.2",

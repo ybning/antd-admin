@@ -27,7 +27,7 @@ const { TabPane } = Tabs
 @connect(({ thing, loading }) => ({
   thing,
   loading,
-  queryLoading: loading.effects['dict/query'],
+  //queryLoading: loading.effects['dict/query'],
 }))
 class Thing extends PureComponent {
   componentDidMount() {
