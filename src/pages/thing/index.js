@@ -177,7 +177,9 @@ class Thing extends PureComponent {
 
     const thingGroupModalProps = {
       item: modalType === 'createThingGroup' ? {} : currentItem,
-      visible: modalVisible,
+      visible:
+        modalVisible &&
+        (modalType === 'createThingGroup' || modalType === 'updateThingGroup'),
       destroyOnClose: true,
       maskClosable: false,
       confirmLoading: loading.effects[`thing/${modalType}`],
@@ -209,7 +211,10 @@ class Thing extends PureComponent {
 
     const thingModalProps = {
       item: {}, //modalType === 'createThing' ? {} : currentItem,
-      visible: modalVisible,
+      //visible: modalVisible,
+      visible:
+        modalVisible &&
+        (modalType === 'createThing' || modalType === 'updateThing'),
       destroyOnClose: true,
       maskClosable: false,
       confirmLoading: loading.effects[`thing/${modalType}`],
@@ -328,7 +333,10 @@ class Thing extends PureComponent {
       enabledIotConfigList,
       iotProductList,
       item: modalType === 'createThingProduct' ? {} : currentItem,
-      visible: modalVisible,
+      visible:
+        modalVisible &&
+        (modalType === 'createThingProduct' ||
+          modalType === 'updateThingProduct'),
       destroyOnClose: true,
       maskClosable: false,
       confirmLoading: loading.effects[`thing/${modalType}`],

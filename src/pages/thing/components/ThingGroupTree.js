@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'dva'
-import { Tree, Input, Row, Col } from 'antd'
+import { Tree, Input, Row, Col, Button } from 'antd'
 
 const { TreeNode } = Tree
 const { Search } = Input
@@ -138,16 +138,21 @@ class ThingGroupTree extends React.Component {
     return (
       <div>
         <Row gutter={8}>
-          <Col md={24}>
+          <Col md={20}>
             <Search
               style={{ marginBottom: 8 }}
               placeholder="搜索"
               onChange={this.onChange}
             />
           </Col>
-          {/* <Col md={4}>
-            <Button type="primary" icon="plus" shape="circle" onClick={this.onClickAddThingGroup.bind(this)} />
-          </Col> */}
+          <Col md={4}>
+            <Button
+              type="primary"
+              icon="plus"
+              shape="circle"
+              onClick={this.onClickAddThingGroup.bind(this)}
+            />
+          </Col>
         </Row>
         <Tree
           onExpand={this.onExpand}

@@ -16,6 +16,15 @@ const formItemLayout = {
 
 @Form.create()
 class ThingProductModal extends PureComponent {
+  // componentDidMount(){
+  //   this.props.dispatch({
+  //     type: 'thing/queryIotProductList',
+  //     payload: {
+  //       iotId: this.props.form.getFieldValue('iotId'),
+  //     },
+  //   });
+  // }
+
   handleOk = () => {
     const { onOk, form, curTreeOptItem } = this.props
     const { validateFields, getFieldsValue } = form
