@@ -4,7 +4,6 @@ import { connect } from 'dva'
 import { Tabs } from 'antd'
 import { router } from 'utils'
 import { stringify } from 'qs'
-import { withI18n } from '@lingui/react'
 import { Page } from 'components'
 import List from './components/List'
 
@@ -15,15 +14,25 @@ const EnumPostStatus = {
   PUBLISHED: 2,
 }
 
-@withI18n()
 @connect(({ post, loading }) => ({ post, loading }))
 class Post extends PureComponent {
-  render() {
-    const { post, loading, location, i18n } = this.props
+  handleTabClick = key => {
+    const { pathname } = this.props.location
+
+    router.push({
+      pathname,
+      search: stringify({
+        status: key,
+      }),
+    })
+  }
+
+  get listProps() {
+    const { post, loading, location } = this.props
     const { list, pagination } = post
     const { query, pathname } = location
 
-    const listProps = {
+    return {
       pagination,
       dataSource: list,
       loading: loading.effects['post/query'],
@@ -38,15 +47,11 @@ class Post extends PureComponent {
         })
       },
     }
+  }
 
-    const handleTabClick = key => {
-      router.push({
-        pathname,
-        search: stringify({
-          status: key,
-        }),
-      })
-    }
+  render() {
+    const { location, i18n } = this.props
+    const { query } = location
 
     return (
       <Page inner>
@@ -56,19 +61,13 @@ class Post extends PureComponent {
               ? String(EnumPostStatus.UNPUBLISH)
               : String(EnumPostStatus.PUBLISHED)
           }
-          onTabClick={handleTabClick}
+          onTabClick={this.handleTabClick}
         >
-          <TabPane
-            tab={i18n.t`Publised`}
-            key={String(EnumPostStatus.PUBLISHED)}
-          >
-            <List {...listProps} />
+          <TabPane tab={`Publised`} key={String(EnumPostStatus.PUBLISHED)}>
+            <List {...this.listProps} />
           </TabPane>
-          <TabPane
-            tab={i18n.t`Unpublished`}
-            key={String(EnumPostStatus.UNPUBLISH)}
-          >
-            <List {...listProps} />
+          <TabPane tab={`Unpublished`} key={String(EnumPostStatus.UNPUBLISH)}>
+            <List {...this.listProps} />
           </TabPane>
         </Tabs>
       </Page>

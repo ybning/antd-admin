@@ -18,9 +18,9 @@ export default {
       {
         id: '1',
         icon: 'laptop',
-        name: 'Dashboard',
-        zhName: '仪表盘',
-        router: '/dashboard',
+        name: 'Dict',
+        zhName: '',
+        router: '/dict',
       },
     ],
     locationPathname: '',
@@ -43,15 +43,15 @@ export default {
       //dispatch({ type: 'query' })
     },
     setupHistory({ dispatch, history }) {
-      // history.listen(location => {
-      //   dispatch({
-      //     type: 'updateState',
-      //     payload: {
-      //       locationPathname: location.pathname,
-      //       locationQuery: location.query,
-      //     },
-      //   })
-      // })
+      history.listen(location => {
+        dispatch({
+          type: 'updateState',
+          payload: {
+            locationPathname: location.pathname,
+            locationQuery: location.query,
+          },
+        })
+      })
     },
 
     setupRequestCancel({ history }) {
@@ -101,7 +101,7 @@ export default {
         store.set('isInit', true)
         if (pathMatchRegexp(['/', '/login'], window.location.pathname)) {
           router.push({
-            pathname: '/dashboard',
+            pathname: '/dict',
           })
         }
       } else if (queryLayout(config.layouts, locationPathname) !== 'public') {

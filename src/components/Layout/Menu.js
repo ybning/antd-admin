@@ -86,7 +86,7 @@ class SiderMenu extends PureComponent {
       }
       return (
         <Menu.Item key={item.id}>
-          <Navlink to={addLangPrefix(item.url) || '#'}>
+          <Navlink to={item.url || '#'}>
             {item.icon && <Icon type={item.icon} />}
             <span>{item.menuName}</span>
           </Navlink>

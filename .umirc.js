@@ -1,6 +1,6 @@
 // https://umijs.org/config/
 import { resolve } from 'path'
-import { i18n } from './src/utils/config'
+//import { i18n } from './src/utils/config'
 
 export default {
   ignoreMomentLocale: true,
@@ -33,27 +33,27 @@ export default {
             /chart\/Recharts\/.+Component\.js$/,
             /chart\/Recharts\/Container\.js$/,
           ],
-          update: routes => {
-            if (!i18n) return routes
+          // update: routes => {
+          //   if (!i18n) return routes
 
-            const newRoutes = []
-            for (const item of routes[0].routes) {
-              newRoutes.push(item)
-              if (item.path) {
-                newRoutes.push(
-                  Object.assign({}, item, {
-                    path:
-                      `/:lang(${i18n.languages
-                        .map(item => item.key)
-                        .join('|')})` + item.path,
-                  })
-                )
-              }
-            }
-            routes[0].routes = newRoutes
+          //   const newRoutes = []
+          //   for (const item of routes[0].routes) {
+          //     newRoutes.push(item)
+          //     if (item.path) {
+          //       newRoutes.push(
+          //         Object.assign({}, item, {
+          //           path:
+          //             `/:lang(${i18n.languages
+          //               .map(item => item.key)
+          //               .join('|')})` + item.path,
+          //         })
+          //       )
+          //     }
+          //   }
+          //   routes[0].routes = newRoutes
 
-            return routes
-          },
+          //   return routes
+          // },
         },
         dll: {
           include: ['dva', 'dva/router', 'dva/saga', 'dva/fetch', 'antd/es'],
@@ -70,13 +70,13 @@ export default {
   // https://ant.design/docs/react/customize-theme
   theme: './config/theme.config.js',
   // Webpack Configuration
-  proxy: {
-    '/api/v1/weather': {
-      target: 'https://api.seniverse.com/',
-      changeOrigin: true,
-      pathRewrite: { '^/api/v1/weather': '/v3/weather' },
-    },
-  },
+  // proxy: {
+  //   '/api/v1/weather': {
+  //     target: 'https://api.seniverse.com/',
+  //     changeOrigin: true,
+  //     pathRewrite: { '^/api/v1/weather': '/v3/weather' },
+  //   },
+  // },
   alias: {
     api: resolve(__dirname, './src/services/'),
     components: resolve(__dirname, './src/components'),

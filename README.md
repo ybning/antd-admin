@@ -84,3 +84,32 @@ We very much welcome your contribution, you can build together with us in the fo
 - Use Ant Design Pro in your daily work.
 - Submit [GitHub issues](http://github.com/zuiidea/antd-admin/issues)s to report bugs or ask questions.
 - Propose [Pull Request](http://github.com/zuiidea/antd-admin/pulls) to improve our code.
+
+
+
+
+
+
+
+
+
+
+系统管理
+
+用户列表 
+    system/user
+用户详情 
+    system/user/$id
+    system/user/1
+
+    system/user/index.js
+用户新增
+    system/user/add
+    system/user/add
+
+    system/user/add.js
+用户编辑
+    system/user/$id/edit
+    system/user/1/edit
+
+    system/user/$id/edit.js

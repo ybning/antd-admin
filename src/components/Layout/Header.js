@@ -2,7 +2,6 @@ import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Menu, Icon, Layout, Avatar, Popover, Badge, List, Button } from 'antd'
 import { Ellipsis } from 'ant-design-pro'
-import { Trans, withI18n } from '@lingui/react'
 import { setLocale } from 'utils'
 import moment from 'moment'
 import classnames from 'classnames'
@@ -11,7 +10,6 @@ import styles from './Header.less'
 
 const { SubMenu } = Menu
 
-@withI18n()
 class Header extends PureComponent {
   handleClickMenu = e => {
     e.key === 'SignOut' && this.props.onSignOut()
@@ -29,24 +27,26 @@ class Header extends PureComponent {
     } = this.props
 
     const rightContent = [
-      <Button type="primary" shape="round" icon="cloud" size="small" href="">
+      <Button
+        type="primary"
+        shape="round"
+        icon="cloud"
+        size="small"
+        href="/index.html#/main"
+      >
         进入大屏端
       </Button>,
       <Menu key="user" mode="horizontal" onClick={this.handleClickMenu}>
         <SubMenu
           title={
             <Fragment>
-              <span style={{ color: '#999', marginRight: 4 }}>
-                <Trans>Hi,</Trans>
-              </span>
+              <span style={{ color: '#999', marginRight: 4 }}>你好！</span>
               <span>{username}</span>
               <Avatar style={{ marginLeft: 8 }} src={avatar} />
             </Fragment>
           }
         >
-          <Menu.Item key="SignOut">
-            <Trans>Sign out</Trans>
-          </Menu.Item>
+          <Menu.Item key="SignOut">退出</Menu.Item>
         </SubMenu>
       </Menu>,
     ]

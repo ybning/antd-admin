@@ -14,7 +14,6 @@ import {
   Checkbox,
 } from 'antd'
 import classnames from 'classnames'
-import { Trans } from '@lingui/react'
 import api from '@/services/api'
 import { Page } from 'components'
 
@@ -183,7 +182,7 @@ class RequestPage extends React.Component {
                   onClick={this.handleVisible}
                   size="large"
                 >
-                  <Trans>Params</Trans>
+                  参数
                 </Button>
               </InputGroup>
 
@@ -193,7 +192,7 @@ class RequestPage extends React.Component {
                 style={{ width: 100 }}
                 onClick={this.handleRequest}
               >
-                <Trans>Send</Trans>
+                发送
               </Button>
             </Row>
 
@@ -237,9 +236,7 @@ class RequestPage extends React.Component {
               ))}
 
               <Row style={{ marginTop: 8 }}>
-                <Button onClick={this.handleAddField}>
-                  <Trans>Add Param</Trans>
-                </Button>
+                <Button onClick={this.handleAddField}>添加参数</Button>
               </Row>
             </div>
 
